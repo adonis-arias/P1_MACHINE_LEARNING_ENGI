@@ -1,5 +1,7 @@
 import pytest
-from ..text_processing.text_preprocessor import TextPreprocessor
+import sys
+sys.path.append('path_to_MACHINELEARNINGN_directory')
+from textprocessing.text_preprocessor import TextPreprocessor
 
 @pytest.mark.parametrize("input_text, expected", [
     ("Check out this link: http://example.com", "Check out this link: "),
