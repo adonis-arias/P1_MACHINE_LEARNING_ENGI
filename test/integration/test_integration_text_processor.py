@@ -1,5 +1,7 @@
+import sys
+sys.path.append('/Users/eaariash/desarrollo/MachineLearningEn/practica_n1')
 import pytest
-from text_processing.text_preprocessor import TextPreprocessor
+from text_preprocessor import TextPreprocessor
 
 @pytest.mark.parametrize("input_text, remove_links, remove_hashtags, convert_to_lowercase, expected", [
     ("Check this #hashtag and http://example.com", True, True, True, "check this  and "),

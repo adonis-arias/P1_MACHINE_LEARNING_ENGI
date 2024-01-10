@@ -1,7 +1,9 @@
-import pytest
 import sys
-sys.path.append('path_to_MACHINELEARNINGN_directory')
-from textprocessing.text_preprocessor import TextPreprocessor
+sys.path.append('/Users/eaariash/desarrollo/MachineLearningEn/practica_n1')
+import pytest
+from text_preprocessor import *
+
+# tp.TextPreprocessor = text_preprocessor.tp.TextPreprocessor()
 
 @pytest.mark.parametrize("input_text, expected", [
     ("Check out this link: http://example.com", "Check out this link: "),
@@ -11,7 +13,7 @@ from textprocessing.text_preprocessor import TextPreprocessor
     ("https://example.com is a cool site", " is a cool site"),
 ])
 def test_remove_links(input_text, expected):
-    processor = TextPreprocessor(remove_links=True)
+    processor = tp.TextPreprocessor(remove_links=True)
     assert processor.remove_links(input_text) == expected
 
 @pytest.mark.parametrize("input_text, expected", [
@@ -22,7 +24,7 @@ def test_remove_links(input_text, expected):
     ("Special!!! **&&^%$", "Special "),
 ])
 def test_remove_characters(input_text, expected):
-    processor = TextPreprocessor(remove_characters=True)
+    processor = tp.TextPreprocessor(remove_characters=True)
     assert processor.remove_characters(input_text) == expected
 
 @pytest.mark.parametrize("input_text, expected", [
@@ -33,7 +35,7 @@ def test_remove_characters(input_text, expected):
     ("lower already", "lower already"),
 ])
 def test_convert_to_lowercase(input_text, expected):
-    processor = TextPreprocessor(convert_to_lowercase=True)
+    processor = tp.TextPreprocessor(convert_to_lowercase=True)
     assert processor.convert_to_lowercase(input_text) == expected
 
 @pytest.mark.parametrize("input_text, expected", [
@@ -44,7 +46,7 @@ def test_convert_to_lowercase(input_text, expected):
     ("Text with emoji 😂 at the end", "Text with emoji  at the end"),
 ])
 def test_remove_emojis(input_text, expected):
-    processor = TextPreprocessor(remove_emojis=True)
+    processor = tp.TextPreprocessor(remove_emojis=True)
     assert processor.remove_emojis(input_text) == expected
 
 @pytest.mark.parametrize("input_text, expected", [
@@ -55,6 +57,6 @@ def test_remove_emojis(input_text, expected):
     ("abc123def456", "abcdef"),
 ])
 def test_remove_numbers(input_text, expected):
-    processor = TextPreprocessor(remove_numbers=True)
+    processor = tp.TextPreprocessor(remove_numbers=True)
     assert processor.remove_numbers(input_text) == expected
 
