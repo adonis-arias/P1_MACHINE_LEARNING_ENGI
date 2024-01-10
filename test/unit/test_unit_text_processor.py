@@ -1,9 +1,8 @@
 import sys
 sys.path.append('/Users/eaariash/desarrollo/MachineLearningEn/practica_n1')
 import pytest
-from text_preprocessor import *
+from text_preprocessor import TextPreprocessor
 
-# tp.TextPreprocessor = text_preprocessor.tp.TextPreprocessor()
 
 @pytest.mark.parametrize("input_text, expected", [
     ("Check out this link: http://example.com", "Check out this link: "),
@@ -13,7 +12,7 @@ from text_preprocessor import *
     ("https://example.com is a cool site", " is a cool site"),
 ])
 def test_remove_links(input_text, expected):
-    processor = tp.TextPreprocessor(remove_links=True)
+    processor = TextPreprocessor(remove_links=True)
     assert processor.remove_links(input_text) == expected
 
 @pytest.mark.parametrize("input_text, expected", [
@@ -24,7 +23,7 @@ def test_remove_links(input_text, expected):
     ("Special!!! **&&^%$", "Special "),
 ])
 def test_remove_characters(input_text, expected):
-    processor = tp.TextPreprocessor(remove_characters=True)
+    processor = TextPreprocessor(remove_characters=True)
     assert processor.remove_characters(input_text) == expected
 
 @pytest.mark.parametrize("input_text, expected", [
@@ -35,7 +34,7 @@ def test_remove_characters(input_text, expected):
     ("lower already", "lower already"),
 ])
 def test_convert_to_lowercase(input_text, expected):
-    processor = tp.TextPreprocessor(convert_to_lowercase=True)
+    processor = TextPreprocessor(convert_to_lowercase=True)
     assert processor.convert_to_lowercase(input_text) == expected
 
 @pytest.mark.parametrize("input_text, expected", [
@@ -46,7 +45,7 @@ def test_convert_to_lowercase(input_text, expected):
     ("Text with emoji 😂 at the end", "Text with emoji  at the end"),
 ])
 def test_remove_emojis(input_text, expected):
-    processor = tp.TextPreprocessor(remove_emojis=True)
+    processor = TextPreprocessor(remove_emojis=True)
     assert processor.remove_emojis(input_text) == expected
 
 @pytest.mark.parametrize("input_text, expected", [
@@ -57,6 +56,6 @@ def test_remove_emojis(input_text, expected):
     ("abc123def456", "abcdef"),
 ])
 def test_remove_numbers(input_text, expected):
-    processor = tp.TextPreprocessor(remove_numbers=True)
+    processor = TextPreprocessor(remove_numbers=True)
     assert processor.remove_numbers(input_text) == expected
 
